@@ -1,0 +1,21 @@
+.Box {
+  min-width: 100px;
+  border: 1px solid #666;
+  margin: 10px;
+  padding: 10px;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li > button {
+  margin: 5px;
+}

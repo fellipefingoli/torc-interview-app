@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useReducer } from "react";
+import listReducer from "./reducers/lists";
+import Box from "./components/Box";
 
 function App() {
+  const list1 = ["milk", "cookies", "orange"];
+  const list2 = ["candy", "lolipop"];
+
+  const [state, dispatch] = useReducer(listReducer, [
+    { title: "foods", list: list1 },
+    { title: "candies", list: list2 },
+  ]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Torc Interview</h1>
       </header>
+      <section className="Box-Container">
+        {state &&
+          state.map((box, index) => (
+            <Box
+              className="Box"
+              key={index}
+              listIndex={index}
+              list={box.list}
+              boxTitle={box.title}
+              dispatch={dispatch}
+            />
+          ))}
+      </section>
     </div>
   );
 }
